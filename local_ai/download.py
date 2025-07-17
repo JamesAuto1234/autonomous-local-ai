@@ -11,7 +11,7 @@ def download_model_from_hf(model_name: str, attempt: int = 3) -> str:
     file_path = DEFAULT_MODEL_DIR / file_name
     
     if file_path.exists():
-        return True, file_path
+        return True, str(file_path)
     
     for _ in range(attempt):
         try:
@@ -22,7 +22,7 @@ def download_model_from_hf(model_name: str, attempt: int = 3) -> str:
             )
             logger.success(f"Model {model_name} downloaded successfully")
             
-            return True, DEFAULT_MODEL_DIR / file_name
+            return True, str(DEFAULT_MODEL_DIR / file_name)
         except Exception as e:
             logger.warning(f"Failed to download model {model_name} after {_ + 1} attempts")
             time.sleep(1)
