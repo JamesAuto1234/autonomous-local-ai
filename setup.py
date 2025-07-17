@@ -1,11 +1,15 @@
 import os
-from local_ai import __version__
 from setuptools import setup, find_packages
+
+# Read version from version.py
+version = {}
+with open(os.path.join(os.path.dirname(__file__), 'local_ai', 'version.py')) as f:
+    exec(f.read(), version)
 
 
 setup(
     name="AutonomousLocalAI",
-    version=__version__,
+    version=version['__version__'],
     packages=find_packages(),
     package_data={
         "local_ai": [
