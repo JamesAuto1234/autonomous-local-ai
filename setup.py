@@ -1,0 +1,51 @@
+import os
+from local_ai import __version__
+from setuptools import setup, find_packages
+
+
+setup(
+    name="AutonomousLocalAI",
+    version=__version__,
+    packages=find_packages(),
+    package_data={
+        "local_ai": [
+            "examples/templates/*.jinja",
+            "examples/best_practices/*.json",
+        ],
+    },
+    include_package_data=True,
+    install_requires=[
+        "rich==14.0.0",
+        "requests==2.32.4",
+        "tqdm==4.67.1",
+        "loguru==0.7.3",
+        "psutil==7.0.0",
+        "httpx==0.28.1",
+        "huggingface_hub==0.33.0",
+        "python-dotenv==1.1.1",
+        "fastapi==0.115.14",
+        "uvicorn==0.35.0",
+        "aiohttp==3.12.13",
+        "setuptools==80.9.0",
+        "pydantic==2.11.7",
+        "pillow==11.3.0",
+        "asyncio==3.4.3",
+        "json_repair==0.47.6",
+        "msgpack==1.1.1"
+    ],
+    entry_points={
+        "console_scripts": [
+            "autonomous = local_ai.cli:main",
+        ],
+    },
+    author="EternalAI",
+    description="A library to manage local language models",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+    python_requires=">=3.11",
+)
